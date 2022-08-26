@@ -1,19 +1,37 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Input from "./components/Input";
+import Navbar from "./components/Navbar";
+import FoodRecipeDetails from "./pages/RecipeDetails";
+import FoodRecipes from "./pages/FoodRecipes";
+import Homepage from "./pages/Homepage";
+import Nutrition from "./pages/Nutrition";
+import RecipeFavourites from "./pages/RecipeFavourites";
 
 function App() {
-  const [results, setResults] = useState([]);
-
-  useEffect(() => {
-    fetch(
-      "https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=8c6f73b2&app_key=e6c45a5c0a0260c97c75738229f02eaf"
-    )
-      .then((response) => response.json())
-      .then((data) => setResults(data));
-  }, []);
+  const [recipes, setRecipes] = useState([]);
 
   return (
     <>
-      <h1>Home{results?.hits?.[0]?.recipe?.label}</h1>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Homepage />}>
+            <Route index element={<Input setRecipes={setRecipes} />} />
+            <Route
+              path="/foodrecipes"
+              element={<FoodRecipes recipes={recipes} />}
+            />
+            <Route
+              path="/foodrecipes:recipe"
+              element={<FoodRecipeDetails recipes={recipes} />}
+            />
+            <Route path="/nutrition" element={<Nutrition />} />
+            <Route path="/recipefavourites" element={<RecipeFavourites />} />
+          </Route>
+          <Route path="*" element={<h1>Error 404 Page Not Found</h1>} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

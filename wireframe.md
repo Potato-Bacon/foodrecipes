@@ -1,6 +1,7 @@
-## Components
+## Pages
 
-SearchInput (Filter)
-Results
-Main Webpage
-Result Details
+HomePage
+FoodRecipes
+Nutriton
+FoodRecipeDetails
+RecipeFavourites

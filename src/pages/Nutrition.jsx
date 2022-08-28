@@ -8,7 +8,7 @@ function Nutrition() {
         placeholder="Insert recipe details"
         type="nutrition"
       ></textarea>
-      <button>Submit</button>
+      <button>Analyze</button>
     </>
   );
 }

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useEffect, useState } from "react";
+import { Outlet, useNavigate } from "react-router";
 
 function Input({ setRecipes }) {
   const [input, setInput] = useState();
@@ -21,16 +21,18 @@ function Input({ setRecipes }) {
     crustceanfree: false,
   });
 
-  const [url, setURL] = useState(
-    "https://api.edamam.com/api/recipes/v2?type=public&q=&app_id=8c6f73b2&app_key=e6c45a5c0a0260c97c75738229f02eaf"
-  );
+  const [filterUrl, setFilterUrl] = useState("");
   const navigate = useNavigate();
 
   const handleInput = (event) => {
     setInput(event.target.value);
   };
   const handleSubmit = () => {
-    setURL(url.replace("&q=", `&q=${input}`));
+    let url = `https://api.edamam.com/api/recipes/v2?type=public&q=${input}&app_id=8c6f73b2&app_key=e6c45a5c0a0260c97c75738229f02eaf`;
+    url = url + filterUrl;
+    console.log(url, "updated");
+
+    // setFilterUrl(filterUrl.replace("&q=", `&q=${input}`));
     // dietState.balanced
     //   ? setURL(url + "&diet=balanced")
     //   : setURL(url.replace("&diet=balanced", ""));
@@ -70,112 +72,106 @@ function Input({ setRecipes }) {
     fetch(url)
       .then((response) => response.json())
       .then((data) => setRecipes(data));
-    navigate("/foodrecipes");
   };
-
-  //   useEffect(() => {
-  //     fetch(
-  //       "https://api.edamam.com/api/recipes/v2?type=public&q=chicken&app_id=8c6f73b2&app_key=e6c45a5c0a0260c97c75738229f02eaf"
-  //     )
-  //       .then((response) => response.json())
-  //       .then((data) => setResults(data));
-  //   }, []);
 
   const handleBalanced = (event) => {
     const o = { ...dietState, balanced: event.target.checked };
     setDietState(o);
 
     o.balanced
-      ? setURL(url + "&diet=balanced")
-      : setURL(url.replace("&diet=balanced", ""));
+      ? setFilterUrl(filterUrl + "&diet=balanced")
+      : setFilterUrl(filterUrl.replace("&diet=balanced", ""));
   };
 
   const handleHighFiber = (event) => {
     const o = { ...dietState, highfiber: event.target.checked };
     setDietState(o);
     o.highfiber
-      ? setURL(url + "&diet=high-fiber")
-      : setURL(url.replace("&diet=high-fiber", ""));
+      ? setFilterUrl(filterUrl + "&diet=high-fiber")
+      : setFilterUrl(filterUrl.replace("&diet=high-fiber", ""));
   };
   const handleHighProtein = (event) => {
     const o = { ...dietState, highprotein: event.target.checked };
     setDietState(o);
     o.highprotein
-      ? setURL(url + "&diet=high-protein")
-      : setURL(url.replace("&diet=high-protein", ""));
+      ? setFilterUrl(filterUrl + "&diet=high-protein")
+      : setFilterUrl(filterUrl.replace("&diet=high-protein", ""));
   };
 
   const handleLowCarb = (event) => {
     const o = { ...dietState, lowcarb: event.target.checked };
     setDietState(o);
     o.lowcarb
-      ? setURL(url + "&diet=low-carb")
-      : setURL(url.replace("&diet=low-carb", ""));
+      ? setFilterUrl(filterUrl + "&diet=low-carb")
+      : setFilterUrl(filterUrl.replace("&diet=low-carb", ""));
   };
 
   const handleLowFat = (event) => {
     const o = { ...dietState, lowfat: event.target.checked };
     setDietState(o);
     o.lowfat
-      ? setURL(url + "&diet=low-fat")
-      : setURL(url.replace("&diet=low-fat", ""));
+      ? setFilterUrl(filterUrl + "&diet=low-fat")
+      : setFilterUrl(filterUrl.replace("&diet=low-fat", ""));
   };
 
   const handleLowSodium = (event) => {
     const o = { ...dietState, lowsodium: event.target.checked };
     setDietState(o);
     o.lowsodium
-      ? setURL(url + "&diet=low-sodium")
-      : setURL(url.replace("&diet=low-sodium", ""));
+      ? setFilterUrl(filterUrl + "&diet=low-sodium")
+      : setFilterUrl(filterUrl.replace("&diet=low-sodium", ""));
   };
   const handleCrustcean = (event) => {
     const o = { ...allergyState, crustceanfree: event.target.checked };
     setAllergyState(o);
     o.crustceanfree
-      ? setURL(url + "&health=crustacean-free")
-      : setURL(url.replace("&health=crustacean-free", ""));
+      ? setFilterUrl(filterUrl + "&health=crustacean-free")
+      : setFilterUrl(filterUrl.replace("&health=crustacean-free", ""));
   };
 
   const handleDairy = (event) => {
     const o = { ...allergyState, dairyfree: event.target.checked };
     setAllergyState(o);
     o.dairyfree
-      ? setURL(url + "&health=dairy-free")
-      : setURL(url.replace("&health=dairy-free", ""));
+      ? setFilterUrl(filterUrl + "&health=dairy-free")
+      : setFilterUrl(filterUrl.replace("&health=dairy-free", ""));
   };
   const handleEgg = (event) => {
     const o = { ...allergyState, eggfree: event.target.checked };
     setAllergyState(o);
     o.eggfree
-      ? setURL(url + "&health=egg-free")
-      : setURL(url.replace("&health=egg-free", ""));
+      ? setFilterUrl(filterUrl + "&health=egg-free")
+      : setFilterUrl(filterUrl.replace("&health=egg-free", ""));
   };
   const handleGluten = (event) => {
     const o = { ...allergyState, glutenfree: event.target.checked };
     setAllergyState(o);
     o.glutenfree
-      ? setURL(url + "&health=gluten-free")
-      : setURL(url.replace("&health=gluten-free", ""));
+      ? setFilterUrl(filterUrl + "&health=gluten-free")
+      : setFilterUrl(filterUrl.replace("&health=gluten-free", ""));
   };
 
   const handleNuts = (event) => {
     const o = { ...allergyState, nutsfree: event.target.checked };
     setAllergyState(o);
     o.nutsfree
-      ? setURL(url + "&health=peanut-free&health=tree-nut-free")
-      : setURL(url.replace("&health=peanut-free&health=tree-nut-free", ""));
+      ? setFilterUrl(filterUrl + "&health=peanut-free&health=tree-nut-free")
+      : setFilterUrl(
+          filterUrl.replace("&health=peanut-free&health=tree-nut-free", "")
+        );
   };
 
   const handleShellFish = (event) => {
     const o = { ...allergyState, shellfishfree: event.target.checked };
     setAllergyState(o);
     o.shellfishfree
-      ? setURL(url + "&health=shellfish-free")
-      : setURL(url.replace("&health=shellfish-free", ""));
+      ? setFilterUrl(filterUrl + "&health=shellfish-free")
+      : setFilterUrl(filterUrl.replace("&health=shellfish-free", ""));
   };
 
   return (
     <>
+      <Outlet />
       <input
         onChange={handleInput}
         name="title"

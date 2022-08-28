@@ -16,19 +16,15 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Homepage />}>
-            <Route index element={<Input setRecipes={setRecipes} />} />
-            <Route
-              path="/foodrecipes"
-              element={<FoodRecipes recipes={recipes} />}
-            />
-            <Route
-              path="/foodrecipes:recipe"
-              element={<FoodRecipeDetails recipes={recipes} />}
-            />
-            <Route path="/nutrition" element={<Nutrition />} />
-            <Route path="/recipefavourites" element={<RecipeFavourites />} />
-          </Route>
+          <Route path="/" element={<Homepage />} />
+          {/* <Route index element={<Input setRecipes={setRecipes} />} /> */}
+          <Route path="/foodrecipes" element={<FoodRecipes />} />
+          <Route
+            path="/foodrecipes:recipe"
+            element={<FoodRecipeDetails recipes={recipes} />}
+          />
+          <Route path="/nutrition" element={<Nutrition />} />
+          <Route path="/recipefavourites" element={<RecipeFavourites />} />
           <Route path="*" element={<h1>Error 404 Page Not Found</h1>} />
         </Routes>
       </BrowserRouter>

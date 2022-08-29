@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Input from "./components/Input";
 import Navbar from "./components/Navbar";
-import FoodRecipeDetails from "./pages/RecipeDetails";
+import FoodRecipeDetails from "./pages/FoodRecipeDetails";
 import FoodRecipes from "./pages/FoodRecipes";
 import Homepage from "./pages/Homepage";
 import Nutrition from "./pages/Nutrition";
@@ -17,11 +16,10 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Homepage />} />
-          {/* <Route index element={<Input setRecipes={setRecipes} />} /> */}
           <Route path="/foodrecipes" element={<FoodRecipes />} />
           <Route
-            path="/foodrecipes:recipe"
-            element={<FoodRecipeDetails recipes={recipes} />}
+            path="/foodrecipes/:recipelabel"
+            element={<FoodRecipeDetails />}
           />
           <Route path="/nutrition" element={<Nutrition />} />
           <Route path="/recipefavourites" element={<RecipeFavourites />} />

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Outlet, useNavigate } from "react-router";
+import { useState } from "react";
+import { Outlet } from "react-router";
 
 function Input({ setRecipes }) {
   const [input, setInput] = useState();
@@ -22,7 +22,6 @@ function Input({ setRecipes }) {
   });
 
   const [filterUrl, setFilterUrl] = useState("");
-  const navigate = useNavigate();
 
   const handleInput = (event) => {
     setInput(event.target.value);
@@ -30,45 +29,7 @@ function Input({ setRecipes }) {
   const handleSubmit = () => {
     let url = `https://api.edamam.com/api/recipes/v2?type=public&q=${input}&app_id=8c6f73b2&app_key=e6c45a5c0a0260c97c75738229f02eaf`;
     url = url + filterUrl;
-    console.log(url, "updated");
 
-    // setFilterUrl(filterUrl.replace("&q=", `&q=${input}`));
-    // dietState.balanced
-    //   ? setURL(url + "&diet=balanced")
-    //   : setURL(url.replace("&diet=balanced", ""));
-    // dietState.highfiber
-    //   ? setURL(url + "&diet=high-fiber")
-    //   : setURL(url.replace("&diet=high-fiber", ""));
-    // dietState.highprotein
-    //   ? setURL(url + "&diet=high-protein")
-    //   : setURL(url.replace("&diet=high-protein", ""));
-    // dietState.lowcarb
-    //   ? setURL(url + "&diet=low-carb")
-    //   : setURL(url.replace("&diet=low-carb", ""));
-    // dietState.lowfat
-    //   ? setURL(url + "&diet=low-fat")
-    //   : setURL(url.replace("&diet=low-fat", ""));
-    // dietState.lowsodium
-    //   ? setURL(url + "&diet=low-sodium")
-    //   : setURL(url.replace("&diet=low-sodium", ""));
-    // allergyState.crustceanfree
-    //   ? setURL(url + "&health=crustacean-free")
-    //   : setURL(url.replace("&health=crustacean-free", ""));
-    // allergyState.dairyfree
-    //   ? setURL(url + "&health=dairy-free")
-    //   : setURL(url.replace("&health=dairy-free", ""));
-    // allergyState.eggfree
-    //   ? setURL(url + "&health=egg-free")
-    //   : setURL(url.replace("&health=egg-free", ""));
-    // allergyState.glutenfree
-    //   ? setURL(url + "&health=gluten-free")
-    //   : setURL(url.replace("&health=gluten-free", ""));
-    // allergyState.nutsfree
-    //   ? setURL(url + "&health=peanut-free&health=tree-nut-free")
-    //   : setURL(url.replace("&health=peanut-free&health=tree-nut-free", ""));
-    // allergyState.shellfishfree
-    //   ? setURL(url + "&health=shellfish-free")
-    //   : setURL(url.replace("&health=shellfish-free", ""));
     fetch(url)
       .then((response) => response.json())
       .then((data) => setRecipes(data));

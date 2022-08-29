@@ -1,20 +1,22 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Input from "../components/Input";
 
 function FoodRecipes() {
   const [recipes, setRecipes] = useState([]);
   const perServing = (a, b) => a / b;
+  console.log(recipes);
 
   return (
     <>
       <Input setRecipes={setRecipes} />
       <h1>Food Recipes</h1>
 
-      {console.log(recipes)}
-
       {recipes?.hits?.map((r) => (
         <>
-          <img src={r?.recipe?.image} key={r?.recipe?.label} />
+          <Link to={`/foodrecipes/${r?.recipe?.uri.substring(51)}`}>
+            <img src={r?.recipe?.image} key={r?.recipe?.label} />
+          </Link>
           <p>{r?.recipe?.label} </p>
 
           <p>

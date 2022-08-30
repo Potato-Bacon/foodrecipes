@@ -133,11 +133,25 @@ function Input({ setRecipes }) {
   return (
     <>
       <Outlet />
-      <input
-        onChange={handleInput}
-        name="title"
-        placeholder="Search for Recipes"
-      />
+      {/* start */}
+
+      <label
+        className="relative block p-3 border-2 border-gray-200 rounded-lg"
+        for="name"
+      >
+        <input
+          onChange={handleInput}
+          className="w-full px-0 pt-3.5 pb-0 text-sm placeholder-grey-400 border-none focus:ring-0 peer"
+          id="name"
+          name="title"
+          type="text"
+          placeholder="Search for Recipes.."
+        />
+
+        <span className="absolute text-xs font-medium text-gray-500 transition-all left-3 peer-focus:text-xs peer-focus:top-3 peer-focus:translate-y-0 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-sm"></span>
+      </label>
+      {/* end */}
+
       <button onClick={handleSubmit}>Submit</button>
       <div>
         Diet

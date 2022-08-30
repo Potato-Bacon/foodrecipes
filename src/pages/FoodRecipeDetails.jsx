@@ -4,7 +4,8 @@ import { useParams } from "react-router";
 function FoodRecipeDetails() {
   const { recipelabel } = useParams();
   const [recipeDetail, setRecipeDetail] = useState();
-  const perServing = (a, b) => a / b;
+  const caloriesPerServing = (totalCalories, servings) =>
+    totalCalories / servings;
 
   useEffect(() => {
     const url = `https://api.edamam.com/api/recipes/v2/recipe_${recipelabel}?type=public&app_id=8c6f73b2&app_key=e6c45a5c0a0260c97c75738229f02eaf`;
@@ -42,12 +43,14 @@ function FoodRecipeDetails() {
       <h3>Nutrition Value</h3>
       <p name="calories">
         calories{" "}
-        {Math.round(perServing(recipeDetail?.recipe?.calories, servings))}{" "}
+        {Math.round(
+          caloriesPerServing(recipeDetail?.recipe?.calories, servings)
+        )}{" "}
       </p>
       <p name="fat">
         Fat{" "}
         {Math.round(
-          perServing(
+          caloriesPerServing(
             recipeDetail?.recipe?.totalNutrients?.FAT?.quantity,
             servings
           )
@@ -57,7 +60,7 @@ function FoodRecipeDetails() {
       <p name="Saturated Fat">
         Saturated Fat{" "}
         {Math.round(
-          perServing(
+          caloriesPerServing(
             recipeDetail?.recipe?.totalNutrients?.FASAT?.quantity,
             servings
           )
@@ -67,32 +70,114 @@ function FoodRecipeDetails() {
       <p name="Monosaturated Fat">
         Monosaturated Fat{" "}
         {Math.round(
-          perServing(
+          caloriesPerServing(
             recipeDetail?.recipe?.totalNutrients?.FAMS?.quantity,
             servings
           )
         )}
+        g
       </p>
       <p name="Polyunsaturated Fat">
         {" "}
         Polyunsaturated Fat{" "}
         {Math.round(
-          perServing(
+          caloriesPerServing(
             recipeDetail?.recipe?.totalNutrients?.FAPU?.quantity,
             servings
           )
         )}
+        g
       </p>
       <p name="Carbs">
         Carbs{" "}
         {Math.round(
-          perServing(
+          caloriesPerServing(
             recipeDetail?.recipe?.totalNutrients?.CHOCDF?.quantity,
             servings
           )
-        )}{" "}
+        )}
+        g
       </p>
-      <p name=""></p>
+      <p name="Fiber">
+        Fiber{" "}
+        {Math.round(
+          caloriesPerServing(
+            recipeDetail?.recipe?.totalNutrients?.FIBTG?.quantity,
+            servings
+          )
+        )}
+        g
+      </p>
+      <p name="Sugars">
+        Sugars{" "}
+        {Math.round(
+          caloriesPerServing(
+            recipeDetail?.recipe?.totalNutrients?.SUGAR?.quantity,
+            servings
+          )
+        )}
+        g
+      </p>
+      <p name="Protein">
+        Protein{" "}
+        {Math.round(
+          caloriesPerServing(
+            recipeDetail?.recipe?.totalNutrients?.PROCNT?.quantity,
+            servings
+          )
+        )}
+        g
+      </p>
+      <p name="Cholesterol">
+        Cholesterol{" "}
+        {Math.round(
+          caloriesPerServing(
+            recipeDetail?.recipe?.totalNutrients?.CHOLE?.quantity,
+            servings
+          )
+        )}
+        g
+      </p>
+      <p name="Sodium">
+        Sodium{" "}
+        {Math.round(
+          caloriesPerServing(
+            recipeDetail?.recipe?.totalNutrients?.NA?.quantity,
+            servings
+          )
+        )}
+        g
+      </p>
+      <p name="Calcium">
+        Calcium{" "}
+        {Math.round(
+          caloriesPerServing(
+            recipeDetail?.recipe?.totalNutrients?.CA?.quantity,
+            servings
+          )
+        )}
+        g
+      </p>
+      <p name="Magnesium">
+        Magnesium{" "}
+        {Math.round(
+          caloriesPerServing(
+            recipeDetail?.recipe?.totalNutrients?.MG?.quantity,
+            servings
+          )
+        )}
+        g
+      </p>
+      <p name="Potassium">
+        Potassium{" "}
+        {Math.round(
+          caloriesPerServing(
+            recipeDetail?.recipe?.totalNutrients?.K?.quantity,
+            servings
+          )
+        )}
+        g
+      </p>
       <br />
       <a href={recipeDetail?.recipe?.url} target="blank">
         Preparation

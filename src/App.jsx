@@ -6,9 +6,10 @@ import FoodRecipes from "./pages/FoodRecipes";
 import Homepage from "./pages/Homepage";
 import Nutrition from "./pages/Nutrition";
 import RecipeFavourites from "./pages/RecipeFavourites";
+import "./index.css";
 
 function App() {
-  const [recipes, setRecipes] = useState([]);
+  const [favourites, setFavourites] = useState([]);
 
   return (
     <>
@@ -16,13 +17,24 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/foodrecipes" element={<FoodRecipes />} />
+          <Route
+            path="/foodrecipes"
+            element={
+              <FoodRecipes
+                favourites={favourites}
+                setFavourites={setFavourites}
+              />
+            }
+          />
           <Route
             path="/foodrecipes/:recipelabel"
             element={<FoodRecipeDetails />}
           />
           <Route path="/nutrition" element={<Nutrition />} />
-          <Route path="/recipefavourites" element={<RecipeFavourites />} />
+          <Route
+            path="/recipefavourites"
+            element={<RecipeFavourites favourites={favourites} />}
+          />
           <Route path="*" element={<h1>Error 404 Page Not Found</h1>} />
         </Routes>
       </BrowserRouter>

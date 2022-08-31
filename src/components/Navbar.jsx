@@ -4,13 +4,24 @@ function Navbar() {
   return (
     <>
       <nav>
-        <Link to="/">Home</Link>
+        <Link to="/" className="btn btn-ghost normal-case text-xl">
+          Home
+        </Link>
         {"  "}
-        <Link to="/nutrition">Nutrition</Link>
         {"  "}
-        <Link to="/foodrecipes">Food Recipes</Link>
+        <Link to="/foodrecipes" className="btn btn-ghost normal-case text-xl">
+          Food Recipes
+        </Link>
+        <Link
+          to="/recipefavourites"
+          className="btn btn-ghost normal-case text-xl"
+        >
+          Recipe Favourites
+        </Link>
+        <Link to="/nutrition" className="btn btn-ghost normal-case text-xl">
+          Nutrition
+        </Link>
         {"  "}
-        <Link to="/recipefavourites">Recipe Favourites</Link>
         {"  "}
       </nav>
     </>

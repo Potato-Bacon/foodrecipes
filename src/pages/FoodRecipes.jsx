@@ -30,6 +30,7 @@ function FoodRecipes({ favourites, setFavourites }) {
 
   return (
     <>
+      {/* End */}
       <Input setRecipes={setRecipes} />
       <h1>Food Recipes</h1>
 
@@ -38,7 +39,7 @@ function FoodRecipes({ favourites, setFavourites }) {
           <Link to={`/foodrecipes/${r?.recipe?.uri.substring(51)}`}>
             <img src={r?.recipe?.image} key={r?.recipe?.label} />
           </Link>
-          <h3>{r?.recipe?.label} </h3>
+
           <button
             recipeName={r?.recipe?.label}
             url={r?.recipe?.image}
@@ -52,14 +53,14 @@ function FoodRecipes({ favourites, setFavourites }) {
             &#x2764;&#xFE0F;
           </button>
 
+          <h2>{r?.recipe?.label}</h2>
           <p>
             {Math.round(
               caloriesPerServing(r?.recipe?.calories, r?.recipe?.yield)
-            )}
+            )}{" "}
             kcal per serving
           </p>
           <p>{r?.recipe?.yield} servings</p>
-          <p></p>
         </>
       ))}
     </>

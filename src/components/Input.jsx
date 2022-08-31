@@ -135,22 +135,34 @@ function Input({ setRecipes }) {
       <Outlet />
       {/* start */}
 
-      <label
-        className="relative block p-3 border-2 border-gray-200 rounded-lg"
-        for="name"
-      >
-        <input
-          onChange={handleInput}
-          className="w-full px-0 pt-3.5 pb-0 text-sm placeholder-grey-400 border-none focus:ring-0 peer"
-          id="name"
-          name="title"
-          type="text"
-          placeholder="Search for Recipes.."
-        />
-
-        <span className="absolute text-xs font-medium text-gray-500 transition-all left-3 peer-focus:text-xs peer-focus:top-3 peer-focus:translate-y-0 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-sm"></span>
-      </label>
-      {/* end */}
+      <div className="form-control">
+        <div className="input-group justify-center">
+          <input
+            onChange={handleInput}
+            id="name"
+            name="title"
+            type="text"
+            placeholder="Search for Recipes.."
+            className="input input-bordered"
+          />
+          <button className="btn btn-square" onClick={handleSubmit}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
 
       <button onClick={handleSubmit}>Submit</button>
       <div>

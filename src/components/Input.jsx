@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import { Outlet } from "react-router";
 
@@ -143,7 +144,7 @@ function Input({ setRecipes }) {
             name="title"
             type="text"
             placeholder="Search for Recipes.."
-            className="input input-bordered"
+            className="input input-bordered w-50 "
           />
           <button className="btn btn-square" onClick={handleSubmit}>
             <svg
@@ -164,9 +165,8 @@ function Input({ setRecipes }) {
         </div>
       </div>
 
-      <button onClick={handleSubmit}>Submit</button>
-      <div>
-        Diet
+      <div className="flex justify-center items-end gap-4 mt-4 mb-6 flex-wrap">
+        <b>Diet</b>
         <input onChange={handleBalanced} type="checkbox" name="Balanced" />{" "}
         <label>Balanced</label>
         <input
@@ -192,9 +192,9 @@ function Input({ setRecipes }) {
         />{" "}
         <label>Low-Sodium</label>
       </div>
-      <div>
+      <div className="flex justify-center items-end gap-4 mb-6 flex-wrap">
         {" "}
-        Allergies
+        <b>Allergies</b>
         <input onChange={handleCrustcean} type="checkbox" name="Crustcean" />
         <label>Crustcean</label>
         <input onChange={handleDairy} type="checkbox" name="Dairy" />{" "}

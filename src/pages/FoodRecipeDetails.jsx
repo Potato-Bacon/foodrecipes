@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import React from "react";
 
 function FoodRecipeDetails() {
   const { recipelabel } = useParams();
@@ -19,7 +20,7 @@ function FoodRecipeDetails() {
 
   return (
     <>
-      <h1>Food Recipe Details</h1>
+      <h1 className="text-2xl font-semibold">Food Recipe Details</h1>
       <p>{recipeDetail?.recipe.label}</p>
       <img src={recipeDetail?.recipe?.image} /> <br />
       <h3>Ingredients List </h3>
@@ -40,6 +41,7 @@ function FoodRecipeDetails() {
           <li>{r}</li>
         ))}
       </ul>
+      {/* nutritional label */}
       <h3>Nutrition Value</h3>
       <p name="calories">
         calories{" "}
@@ -179,6 +181,7 @@ function FoodRecipeDetails() {
         g
       </p>
       <br />
+      {/* Nutritional Label */}
       <a href={recipeDetail?.recipe?.url} target="blank">
         Preparation
       </a>

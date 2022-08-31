@@ -7,6 +7,7 @@ import Homepage from "./pages/Homepage";
 import Nutrition from "./pages/Nutrition";
 import RecipeFavourites from "./pages/RecipeFavourites";
 import "./index.css";
+import Test from "./pages/Test";
 
 function App() {
   const [favourites, setFavourites] = useState([]);
@@ -35,6 +36,7 @@ function App() {
             path="/recipefavourites"
             element={<RecipeFavourites favourites={favourites} />}
           />
+          <Route path="/test" element={<Test />} />
           <Route path="*" element={<h1>Error 404 Page Not Found</h1>} />
         </Routes>
       </BrowserRouter>

@@ -34,17 +34,23 @@ function FoodRecipes({ favourites, setFavourites }) {
           {recipes?.hits?.map((r) => {
             return (
               <>
-                <a
-                  href="/product/build-your-own-drone"
-                  className="relative block border border-gray-100 shadow-2xl "
-                >
+                <div className="relative block border border-gray-100 shadow-2xl ">
                   <button
+                    recipeName={r?.recipe?.label}
+                    url={r?.recipe?.image}
+                    value={r?.recipe?.uri.substring(51)}
+                    calories={Math.round(
+                      caloriesPerServing(r?.recipe?.calories, r?.recipe?.yield)
+                    )}
+                    servings={r?.recipe?.yield}
+                    onClick={storeFavs}
                     type="button"
-                    name="wishlist"
+                    name="favourites"
                     className="absolute p-2 text-white bg-black rounded-full right-4 top-4 "
                   >
-                    <svg
-                      className="w-4 h-4"
+                    {/* to come back to this later  */}
+                    {/* <svg
+                      className="w-8 h-8"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -56,24 +62,36 @@ function FoodRecipes({ favourites, setFavourites }) {
                         strokeWidth="2"
                         d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
                       ></path>
-                    </svg>
+                    </svg> */}
                   </button>
-
-                  <img
-                    loading="lazy"
-                    alt="Build Your Own Drone"
-                    className="w-full h-112 object-cover object-center group-hover:scale-110 transition duration-200"
-                    src={r?.recipe?.image}
-                    key={r?.recipe?.label}
-                  />
+                  <Link to={`/foodrecipes/${r?.recipe?.uri.substring(51)}`}>
+                    <img
+                      className="w-full h-112 object-cover object-center group-hover:scale-110 transition duration-200"
+                      src={r?.recipe?.image}
+                      key={r?.recipe?.label}
+                    />
+                  </Link>
 
                   <div className="p-6">
-                    <p className="text-sm font-medium text-gray-600">$14.99</p>
                     <h5 className="mt-1 text-lg font-bold">
-                      Build Your Own Drone
+                      {r?.recipe?.label}
                     </h5>
+                    <p className="text-sm font-medium text-gray-600">
+                      {" "}
+                      {Math.round(
+                        caloriesPerServing(
+                          r?.recipe?.calories,
+                          r?.recipe?.yield
+                        )
+                      )}{" "}
+                      kcal per serving
+                    </p>
+                    <p className="text-sm font-medium text-gray-600">
+                      {" "}
+                      {r?.recipe?.yield} servings
+                    </p>
                   </div>
-                </a>
+                </div>
               </>
             );
           })}

@@ -7,6 +7,7 @@ import Homepage from "./pages/Homepage";
 import Nutrition from "./pages/Nutrition";
 import RecipeFavourites from "./pages/RecipeFavourites";
 import React from "react";
+import Footer from "./components/Footer";
 
 function App() {
   const [favourites, setFavourites] = useState([]);
@@ -33,10 +34,16 @@ function App() {
           <Route path="/nutrition" element={<Nutrition />} />
           <Route
             path="/recipefavourites"
-            element={<RecipeFavourites favourites={favourites} />}
+            element={
+              <RecipeFavourites
+                favourites={favourites}
+                setFavourites={setFavourites}
+              />
+            }
           />
           <Route path="*" element={<h1>Error 404 Page Not Found</h1>} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   );

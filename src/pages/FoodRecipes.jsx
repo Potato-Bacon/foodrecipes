@@ -20,7 +20,9 @@ function FoodRecipes({ favourites, setFavourites }) {
       favourites.findIndex(
         (index) => index.recipeID === addFavourites.recipeID
       ) === -1;
-    recipeNotInFavs ? setFavourites([...favourites, addFavourites]) : null;
+    recipeNotInFavs
+      ? setFavourites([...favourites, addFavourites])
+      : alert("Recipe has already been added to favourites.");
   };
 
   return (
@@ -48,6 +50,8 @@ function FoodRecipes({ favourites, setFavourites }) {
                     name="favourites"
                     className="absolute p-2 text-white bg-black rounded-full right-4 top-4 "
                   >
+                    {" "}
+                    &#x2764;
                     {/* to come back to this later  */}
                     {/* <svg
                       className="w-8 h-8"

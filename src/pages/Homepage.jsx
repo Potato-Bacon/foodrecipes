@@ -1,13 +1,9 @@
 import React from "react";
-import NutritionLabel from "../components/NutritionLabel";
 function Homepage() {
   return (
     <>
-      <h1>Homepage</h1>
-
-      {/* <Input setRecipes={setRecipes} />
-      <FoodRecipes recipes={recipes} />
-      <FoodRecipeDetails recipes={recipes} /> */}
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Masterclass_chef.png/600px-Masterclass_chef.png?20170316154544" />
+      <h1></h1>
     </>
   );
 }

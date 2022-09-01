@@ -1,25 +1,31 @@
 import React from "react";
 
 function Nutrition() {
-  const handleSubmit = () => {
-    const data = {
-      title: "string",
-      ingr: ["string"],
-      url: "string",
-      summary: "string",
-      yield: "string",
-      time: "string",
-      img: "string",
-      prep: "string",
-    };
+  // const [nutrition, setNutrition] = useState();
 
-    fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    }).then(() => {
-      console.log("test");
-    });
+  // const handleInput = (event) => {
+  //   setNutrition(event.target.value);
+  // };
+
+  const handleSubmit = () => {
+    const info = {
+      title: "",
+      ingr: ["1 cup of rice"],
+      url: "",
+      summary: "",
+      yield: "",
+      time: "",
+      img: "",
+      prep: "",
+    };
+    fetch(
+      "https://api.edamam.com/api/nutrition-details?app_id=3cf07818&app_key=670f073fc4e15144a0b6d392e8b62a8d",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(info),
+      }
+    ).then((response) => console.log(response));
   };
 
   return (

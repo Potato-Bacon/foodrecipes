@@ -6,7 +6,6 @@ import FoodRecipes from "./pages/FoodRecipes";
 import Homepage from "./pages/Homepage";
 import Nutrition from "./pages/Nutrition";
 import RecipeFavourites from "./pages/RecipeFavourites";
-import "./index.css";
 import React from "react";
 
 function App() {

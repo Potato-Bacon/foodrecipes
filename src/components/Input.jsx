@@ -137,14 +137,14 @@ function Input({ setRecipes }) {
       {/* start */}
 
       <div className="form-control">
-        <div className="input-group justify-center">
+        <div className="input-group justify-center py-7">
           <input
             onChange={handleInput}
             id="name"
             name="title"
             type="text"
             placeholder="Search for Recipes.."
-            className="input input-bordered w-50 "
+            className="input input-bordered w-96 text-lg"
           />
           <button className="btn btn-square" onClick={handleSubmit}>
             <svg
@@ -165,7 +165,7 @@ function Input({ setRecipes }) {
         </div>
       </div>
 
-      <div className="flex justify-center items-end gap-4 mt-4 mb-6 flex-wrap">
+      <div className="flex justify-center items-end gap-4 mt-4 mb-6 flex-wrap text-base">
         <b>Diet</b>
         <input onChange={handleBalanced} type="checkbox" name="Balanced" />{" "}
         <label>Balanced</label>
@@ -192,7 +192,7 @@ function Input({ setRecipes }) {
         />{" "}
         <label>Low-Sodium</label>
       </div>
-      <div className="flex justify-center items-end gap-4 mb-6 flex-wrap">
+      <div className="flex justify-center items-end gap-4 mb-6 flex-wrap text-base">
         {" "}
         <b>Allergies</b>
         <input onChange={handleCrustcean} type="checkbox" name="Crustcean" />

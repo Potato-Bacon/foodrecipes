@@ -1,3 +1,5 @@
+import React from "react";
+
 function Nutrition() {
   const handleSubmit = () => {
     const data = {

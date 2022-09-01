@@ -1,12 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* ul {
-  column-count: 2;
-  columns: 2;
-}
-.card {
-  display: flex;
-  flex-direction: row;
-} */

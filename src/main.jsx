@@ -5,8 +5,8 @@ import "./index.css";
 import "./nutrition.scss";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <App />
-    {/* <Test /> */}
-  </React.StrictMode>
+  // <React.StrictMode>
+  <App />
+
+  /* </React.StrictMode> */
 );

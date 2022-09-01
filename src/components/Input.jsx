@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Outlet } from "react-router";
@@ -21,13 +22,14 @@ function Input({ setRecipes }) {
     eggfree: false,
     crustceanfree: false,
   });
-  // useEffect(() => {
-  //   fetch(
-  //     `https://api.edamam.com/api/recipes/v2?type=public&q=&app_id=8c6f73b2&app_key=e6c45a5c0a0260c97c75738229f02eaf&random=true`
-  //   )
-  //     .then((response) => response.json())
-  //     .then((data) => setRecipes(data));
-  // }, []);
+
+  useEffect(() => {
+    fetch(
+      `https://api.edamam.com/api/recipes/v2?type=public&q=undefined&app_id=8c6f73b2&app_key=e6c45a5c0a0260c97c75738229f02eaf&random=true`
+    )
+      .then((response) => response.json())
+      .then((data) => setRecipes(data));
+  }, []);
 
   const [filterUrl, setFilterUrl] = useState("");
 

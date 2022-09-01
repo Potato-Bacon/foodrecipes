@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 function RecipeFavourites({ favourites, setFavourites }) {
   const handleRemove = (string) => {
+    console.log(favourites.indexOf(string));
     const newList = favourites.splice((favourites.indexOf(string), 1));
     setFavourites(newList);
   };

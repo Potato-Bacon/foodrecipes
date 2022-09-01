@@ -10,8 +10,8 @@ function NutritionLabel({ recipeDetail }) {
       <section className="performance-facts">
         <header className="performance-facts__header">
           <h1 className="performance-facts__title">Nutrition Facts</h1>
-          {/* <p>Serving Size 1/2 cup (about 82g) </p>
-          <p>Serves /p> */}
+          <p>Serving Size 1/2 cup (about 82g) </p>
+          <p>Serves 4 </p>
         </header>
         <table className="performance-facts__table">
           <thead>

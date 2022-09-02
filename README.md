@@ -21,7 +21,7 @@ A website showcasing food recipes which allows the user to filter their search b
 
 ## Tools Used
 
-For this project, the following tools were used;
+For this project, the following tools were used.
 
 1.React
 2.Javascript

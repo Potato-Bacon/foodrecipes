@@ -22,10 +22,11 @@ A website showcasing food recipes which allows the user to filter their search b
 ## Tools Used
 
 For this project, the following tools were used;
-React
-Javascript
-TailwindCSS
-Vite
+
+-React
+-Javascript
+-TailwindCSS
+-Vite
 
 
 

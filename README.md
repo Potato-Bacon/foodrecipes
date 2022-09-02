@@ -24,10 +24,10 @@ A website showcasing food recipes which allows the user to filter their search b
 For this project, the following tools were used;
 
 
-1.React
-2.Javascript
-3.Tailwind CSS
-4.Vite
+React,
+Javascript,
+Tailwind CSS,
+Vite
 
 
 

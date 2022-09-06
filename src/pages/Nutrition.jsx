@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import NutritionLabel from "../components/NutritionLabel";
 
 function Nutrition() {
-  // const [nutrition, setNutrition] = useState();
+  const [nutrition, setNutrition] = useState("");
 
-  // const handleInput = (event) => {
-  //   setNutrition(event.target.value);
-  // };
+  const handleInput = (event) => {
+    setNutrition(event.target.value.split("\n"));
+  };
 
   const handleSubmit = () => {
+    console.log(nutrition);
     const info = {
       title: "",
-      ingr: ["1 cup of rice", "1 cup of chickpeas"],
+      ingr: nutrition,
       url: "",
       summary: "",
       yield: "",
@@ -18,6 +20,7 @@ function Nutrition() {
       img: "",
       prep: "",
     };
+    console.log(info, "test");
     fetch(
       "https://api.edamam.com/api/nutrition-details?app_id=3cf07818&app_key=670f073fc4e15144a0b6d392e8b62a8d",
       {
@@ -34,6 +37,7 @@ function Nutrition() {
     <>
       <div>Nutrition</div>
       <textarea
+        onChange={handleInput}
         rows="20"
         cols="50"
         placeholder="Insert recipe details"

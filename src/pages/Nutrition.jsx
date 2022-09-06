@@ -10,7 +10,7 @@ function Nutrition() {
   const handleSubmit = () => {
     const info = {
       title: "",
-      ingr: ["1 cup of rice"],
+      ingr: ["1 cup of rice", "1 cup of chickpeas"],
       url: "",
       summary: "",
       yield: "",
@@ -25,7 +25,9 @@ function Nutrition() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(info),
       }
-    ).then((response) => console.log(response));
+    )
+      .then((response) => response.json())
+      .then((data) => console.log(data));
   };
 
   return (
@@ -37,7 +39,7 @@ function Nutrition() {
         placeholder="Insert recipe details"
         type="nutrition"
       ></textarea>
-      <button onSubmit={handleSubmit}>Analyze</button>
+      <button onClick={handleSubmit}>Analyze</button>
     </>
   );
 }

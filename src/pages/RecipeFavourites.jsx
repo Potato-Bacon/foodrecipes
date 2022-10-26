@@ -3,10 +3,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function RecipeFavourites({ favourites, setFavourites }) {
-  const handleRemove = (string) => {
-    console.log(string);
-    console.log(favourites.indexOf(string));
-    const newList = favourites.splice((favourites.indexOf(string), 1));
+  const handleRemove = (recipeID) => {
+    console.log(recipeID);
+    // console.log(favourites.indexOf(string));
+    console.log(favourites, "before");
+    const newList = favourites.filter((item) => item.recipeID !== recipeID);
+
+    // const newList = favourites.splice((favourites.indexOf(string), 1));
     setFavourites(newList);
   };
 

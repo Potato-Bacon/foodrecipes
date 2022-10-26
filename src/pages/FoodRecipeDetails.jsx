@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import React from "react";
 import NutritionLabel from "../components/NutritionLabel";
+import Img from "react-cool-img";
 
 function FoodRecipeDetails() {
   const { recipelabel } = useParams();
@@ -15,6 +16,9 @@ function FoodRecipeDetails() {
       .then((response) => response.json())
       .then((data) => setRecipeDetail(data));
   }, []);
+  const filteredRecipe = recipeDetail?.recipe?.ingredientLines?.filter(
+    (element) => element !== "undefined"
+  );
 
   return (
     <>
@@ -23,7 +27,7 @@ function FoodRecipeDetails() {
           <div className="grid md:grid-cols gap-8">
             <div className="grid gap-4">
               <div className="lg:col-span-4 rounded-lg overflow-hidden relative -right-80">
-                <img
+                <Img
                   src={recipeDetail?.recipe?.image}
                   loading="lazy"
                   alt="recipe"
@@ -63,7 +67,7 @@ function FoodRecipeDetails() {
                 <div className="justify-center lg:col-span-4 relative">
                   <h3 className="text-xl font-bold pb-3"> Ingredients List </h3>
                   <ul className=" text-lg list-disc">
-                    {recipeDetail?.recipe?.ingredientLines?.map((r) => (
+                    {filteredRecipe?.map((r) => (
                       <li className="list-none">{r}</li>
                     ))}
                   </ul>

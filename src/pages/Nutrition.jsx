@@ -36,6 +36,7 @@ function Nutrition() {
   return (
     <>
       <div>Nutrition</div>
+      <NutritionLabel/>
       <textarea
         onChange={handleInput}
         rows="20"

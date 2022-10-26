@@ -3,6 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Input from "../components/Input";
+import Img from "react-cool-img";
 
 function FoodRecipes({ favourites, setFavourites }) {
   const [recipes, setRecipes] = useState([]);
@@ -21,6 +22,7 @@ function FoodRecipes({ favourites, setFavourites }) {
       favourites.findIndex(
         (index) => index.recipeID === addFavourites.recipeID
       ) === -1;
+
     recipeNotInFavs
       ? setFavourites([...favourites, addFavourites])
       : alert("Recipe has already been added to favourites.");
@@ -70,10 +72,11 @@ function FoodRecipes({ favourites, setFavourites }) {
                     </svg> */}
                   </button>
                   <Link to={`/foodrecipes/${r?.recipe?.uri.substring(51)}`}>
-                    <img
+                    <Img
                       className="w-full h-112 object-cover object-center group-hover:scale-110 transition duration-200"
                       src={r?.recipe?.image}
                       key={r?.recipe?.label}
+                      loading="lazy"
                     />
                   </Link>
 
